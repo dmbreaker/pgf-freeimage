@@ -51,6 +51,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="2"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
@@ -151,6 +152,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories=".,../../Source"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;FIP_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
