@@ -206,8 +206,8 @@ Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data)
 			if (pgf.Mode() == ImageModeRGB48)
 			{
 				int map[] = { 2, 1, 0, 3 };
-				//pgf.GetBitmap(-pitch, &(buff[(pgf.Height() - 1) * pitch]), bpp, map);
-				pgf.GetBitmap(pitch, &(buff[0]), bpp, map);
+				pgf.GetBitmap(-pitch, &(buff[(pgf.Height() - 1) * pitch]), bpp, map);
+				//pgf.GetBitmap(pitch, &(buff[0]), bpp, map);
 			}
 			else
 			{
@@ -217,8 +217,8 @@ Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data)
 		//		pgf.GetBitmap(pitch, &(buff[0]), bpp, map);
 		//#else
 				int map[] = { 2, 1, 0, 3 };
-				//pgf.GetBitmap(-pitch, &(buff[(pgf.Height() - 1) * pitch]), bpp);
-				pgf.GetBitmap(pitch, &(buff[0]), bpp, map);
+				pgf.GetBitmap(-pitch, &(buff[(pgf.Height() - 1) * pitch]), bpp);
+				//pgf.GetBitmap(pitch, &(buff[0]), bpp, map);
 		//#endif
 			}
 
