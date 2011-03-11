@@ -178,10 +178,21 @@ namespace FreeImageAPI
 				Version nativeVersion = new Version(GetVersion());
 				Version wrapperVersion = GetWrapperVersion();
 				// No exception thrown, the library seems to be present
-				return
-				(nativeVersion.Major >= wrapperVersion.Major) &&
-				(nativeVersion.Minor >= wrapperVersion.Minor) &&
-				(nativeVersion.Build >= wrapperVersion.Build);
+
+				// dmbreaker fix it:
+				if (nativeVersion.Major > wrapperVersion.Major)
+					return true;
+				else if (nativeVersion.Major == wrapperVersion.Major)
+				{
+					if(nativeVersion.Minor > wrapperVersion.Minor)
+						return true;
+					else if (nativeVersion.Minor == wrapperVersion.Minor)
+					{
+						return (nativeVersion.Build >= wrapperVersion.Build);
+					}
+				}
+
+				return false;
 			}
 			catch (DllNotFoundException)
 			{
