@@ -445,5 +445,10 @@ namespace FreeImageAPI.Plugins
 		/// RAW camera image (*.*)
 		/// </summary>
 		public static FreeImagePlugin RAW { get { return plugins[34]; } }
+
+		/// <summary>
+		/// PGF image (*.*)
+		/// </summary>
+		public static FreeImagePlugin PGF { get { return plugins[35]; } }
 	}
 }

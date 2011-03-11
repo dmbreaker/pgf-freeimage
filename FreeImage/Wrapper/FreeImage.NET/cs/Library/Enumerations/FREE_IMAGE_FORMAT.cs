@@ -188,5 +188,9 @@ namespace FreeImageAPI
 		/// RAW camera image (*.*)
 		/// </summary>
 		FIF_RAW = 34,
+		/// <summary>
+		/// PGF image (*.*)
+		/// </summary>
+		FIF_PGF = 35,
 	}
 }
