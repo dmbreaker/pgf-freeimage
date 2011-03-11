@@ -3299,6 +3299,10 @@ namespace FreeImageAPI
 		/// RAW camera image (*.*)
 		/// </summary>
 		FIF_RAW = 34,
+		/// <summary>
+		/// PGF image (*.*)
+		/// </summary>
+		FIF_PGF = 35,
 	}
 }
 
@@ -24827,6 +24831,11 @@ namespace FreeImageAPI.Plugins
 		/// RAW camera image (*.*)
 		/// </summary>
 		public static FreeImagePlugin RAW { get { return plugins[34]; } }
+
+		/// <summary>
+		/// PGF image (*.*)
+		/// </summary>
+		public static FreeImagePlugin PGF { get { return plugins[35]; } }
 	}
 }
 

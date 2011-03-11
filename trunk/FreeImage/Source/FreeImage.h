@@ -399,7 +399,8 @@ FI_ENUM(FREE_IMAGE_FORMAT) {
 	FIF_JP2		= 31,
 	FIF_PFM		= 32,
 	FIF_PICT	= 33,
-	FIF_RAW		= 34
+	FIF_RAW		= 34,
+	FIF_PGF		= 35
 };
 
 /** Image type used in FreeImage.
