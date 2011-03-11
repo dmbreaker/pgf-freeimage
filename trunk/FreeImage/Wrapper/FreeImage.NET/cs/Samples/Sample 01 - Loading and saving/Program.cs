@@ -34,7 +34,8 @@ namespace Sample01
 
 	public class Sample
 	{
-		const string fileName = @"Sample.jpg";
+		//const string fileName = @"Sample.jpg";
+		const string fileName = @"Sample.pgf";
 		const string outFileName = @"Sample.tif";
 		FIBITMAP dib = new FIBITMAP();
 		string message = null;
