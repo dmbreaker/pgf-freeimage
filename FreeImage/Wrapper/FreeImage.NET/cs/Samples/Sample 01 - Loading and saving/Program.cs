@@ -127,7 +127,8 @@ namespace Sample01
 				@"Sample",							// No extension was selected so let 'SaveEx' decide.
 				FREE_IMAGE_FORMAT.FIF_PNG,			// A format is needed this time.
 				FREE_IMAGE_SAVE_FLAGS.DEFAULT,		// PNG has no options so use default.
-				FREE_IMAGE_COLOR_DEPTH.FICD_04_BPP,	// 4bpp as result color depth.
+				FREE_IMAGE_COLOR_DEPTH.FICD_32_BPP,	// 4bpp as result color depth.
+				//FREE_IMAGE_COLOR_DEPTH.FICD_04_BPP,	// 4bpp as result color depth.
 				true))								// We're done so unload
 			{
 				// SaveEx will not unload the bitmap in case saving failed.
