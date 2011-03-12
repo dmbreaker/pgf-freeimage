@@ -174,7 +174,8 @@ Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data)
 
 	CFreeImageFileStream stream(io, handle);
 
-	try {
+	try
+	{
 		// open pgf image
 		pgf.Open(&stream);
 
@@ -189,19 +190,23 @@ Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data)
 
 	try
 	{
+		int bpp = (pgf.GetHeader()->channels * 8);
+		dib = FreeImage_AllocateHeader(header_only, pgf.Width(), pgf.Height(), bpp, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK);//@ возможно нужно маски перевернуть
+		//else
+		//	dib = FreeImage_AllocateHeader(header_only, pgf.Width(), pgf.Height(), 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK);//@ возможно нужно маски перевернуть
 		//dib = FreeImage_AllocateHeader(header_only, pgf.Width(), pgf.Height(), pgf.BPP(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK);//@ возможно нужно маски перевернуть
-		dib = FreeImage_AllocateHeader(header_only, pgf.Width(), pgf.Height(), 32, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK);//@ возможно нужно маски перевернуть
+		
 
 		if( !header_only )
 		{
 			pgf.Read();
 
 			// copy bits
-			int bpp = 32;	// pgf.BPP()
+			//int bpp = 32;	// pgf.BPP()
 			//UINT8* buff = new UINT8[pgf.Width()*pgf.Height()*bpp/8];	//@ !код опасный, но для теста подойдет 	//(UINT8 *)image->GetBits();
 			UINT8* buff = (UINT8*)FreeImage_GetBits(dib);
 
-			int pitch = pgf.Width() * 4;	// 32Bit buffer
+			int pitch = pgf.Width() * (bpp/8);	// 32Bit buffer
 
 			if (pgf.Mode() == ImageModeRGB48)
 			{
@@ -252,8 +257,7 @@ Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data)
 		FreeImage_SetDotsPerMeterX(dib, 90.0f * 100.0f / 2.54f);//bih.biXPelsPerMeter);
 		FreeImage_SetDotsPerMeterY(dib, 90.0f * 100.0f / 2.54f);//bih.biYPelsPerMeter);
 
-		if( pgf.GetHeader()->channels == 4 )
-			FreeImage_SetTransparent(dib, (FreeImage_GetColorType(dib) == FIC_RGBALPHA));
+		FreeImage_SetTransparent(dib, (pgf.GetHeader()->channels == 4));
 
 		return dib;
 
