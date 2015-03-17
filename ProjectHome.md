@@ -1,0 +1,1 @@
+[FreeImage library](http://freeimage.sourceforge.net/) fork with PGF (http://libpgf.org) image format support.
